@@ -31,8 +31,10 @@ router.put('/:id', function (req, res) {
 
 // DELETE /customers/:id
 router.delete('/:id', function (req, res) {
-    console.log('ID: ', req.params.id);
-    res.sendStatus(200);
+   repository.delete(req.params.id, (err) => {
+        err ? res.status(500).json({error: err.toString()})
+        : res.status(200);
+    });
 });
 
 // Post /customers

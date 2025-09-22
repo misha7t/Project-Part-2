@@ -23,7 +23,9 @@ class CustomerRepository{
          this.pool.query("update customers set ? where id = ?", [customer, id], callback);
     }
 
-    delete(id) {}
+    delete(id, callback) {
+        this.pool.query("delete from customers where id = ?", id, callback);
+    }
 }
 
 module.exports = CustomerRepository;
